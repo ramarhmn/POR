@@ -1,6 +1,6 @@
-import Link from "next/link"
-import Image from "next/image"
-import { Mail } from "lucide-react"
+import Link from "next/link";
+import Image from "next/image";
+import { Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -22,7 +22,13 @@ export default function Footer() {
 
           {/* Center logo */}
           <div className="relative z-10 flex flex-col items-center">
-            <Image src="/logoputih.png" alt="Logo" width={180} height={180} className="h-14 md:h-32 w-auto" />
+            <Image
+              src="/logoputih.png"
+              alt="Logo"
+              width={180}
+              height={180}
+              className="h-14 md:h-32 w-auto"
+            />
           </div>
 
           {/* Retro TV - absolutely positioned */}
@@ -44,20 +50,32 @@ export default function Footer() {
         <div className="flex flex-row justify-between items-center">
           {/* Navigation links - horizontal on all screens but smaller on mobile */}
           <nav className="flex flex-row space-x-2 md:space-x-6 items-center text-xs md:text-base">
-            <Link href="#tagline" className="text-white hover:underline whitespace-nowrap">
+            <Link
+              href="#tagline"
+              className="text-white hover:underline whitespace-nowrap"
+            >
               Home
             </Link>
-            <Link href="#about" className="text-white hover:underline whitespace-nowrap">
+            <Link
+              href="#about"
+              className="text-white hover:underline whitespace-nowrap"
+            >
               About
             </Link>
-            <Link href="#project" className="text-white hover:underline whitespace-nowrap">
+            <Link
+              href="#project"
+              className="text-white hover:underline whitespace-nowrap"
+            >
               Project
             </Link>
           </nav>
 
           {/* Social media icons - smaller on mobile */}
           <div className="flex space-x-2 md:space-x-4">
-            <Link href="https://github.com/ramarhmn?tab=repositories" aria-label="GitHub">
+            <Link
+              href="https://github.com/ramarhmn?tab=repositories"
+              aria-label="GitHub"
+            >
               <div className="text-white hover:text-pink-200">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -71,12 +89,18 @@ export default function Footer() {
                 </svg>
               </div>
             </Link>
-            <Link href="mailto:ramarahman38@gmail.com" aria-label="Email">
+            <Link
+              href="googlegmail://co?to=ramarahman38@gmail.com"
+              aria-label="Email"
+            >
               <div className="text-white hover:text-pink-200">
                 <Mail className="h-4 w-4 md:h-6 md:w-6" />
               </div>
             </Link>
-            <Link href="https://www.instagram.com/ramarhmn/" aria-label="Instagram">
+            <Link
+              href="https://www.instagram.com/ramarhmn/"
+              aria-label="Instagram"
+            >
               <div className="text-white hover:text-pink-200">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -94,5 +118,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

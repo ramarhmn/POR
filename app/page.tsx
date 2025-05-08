@@ -1,34 +1,34 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect } from "react"
-import Image from "next/image"
-import Footer from "../components/magicui/Footer"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { TextReveal } from "@/components/magicui/about"
-import ProjectsSection from "@/components/magicui/project"
-import LoadingScreen from "@/components/magicui/loading-screen"
-import { VelocityScroll } from "@/components/magicui/scroll-based-velocity"
+import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import Footer from "../components/magicui/Footer";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { TextReveal } from "@/components/magicui/about";
+import ProjectsSection from "@/components/magicui/project";
+import LoadingScreen from "@/components/magicui/loading-screen";
+import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   // Create refs for the container, starting element, and target element
-  const containerRef = useRef<HTMLElement | null>(null)
-  const fromRef = useRef<HTMLElement | null>(null)
-  const toRef = useRef<HTMLElement | null>(null)
-  const pinnedRef = useRef<HTMLDivElement | null>(null)
-  const parallaxRef = useRef<HTMLDivElement | null>(null)
+  const containerRef = useRef<HTMLElement | null>(null);
+  const fromRef = useRef<HTMLElement | null>(null);
+  const toRef = useRef<HTMLElement | null>(null);
+  const pinnedRef = useRef<HTMLDivElement | null>(null);
+  const parallaxRef = useRef<HTMLDivElement | null>(null);
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Prevent scrolling during loading
     if (isLoading) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = ""
+      document.body.style.overflow = "";
 
       // Initialize animations after loading is complete
       // Pinning animation
@@ -40,7 +40,7 @@ export default function Home() {
           pin: true,
           pinSpacing: false,
         },
-      })
+      });
 
       // Parallax animation
       gsap.to(parallaxRef.current, {
@@ -52,23 +52,23 @@ export default function Home() {
           end: "bottom top",
           scrub: true, // Smooth scrubbing effect
         },
-      })
+      });
     }
 
     // Cleanup function
     return () => {
-      document.body.style.overflow = ""
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
-    }
-  }, [isLoading])
+      document.body.style.overflow = "";
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, [isLoading]);
 
   const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev)
-  }
+    setIsMenuOpen((prev) => !prev);
+  };
 
   const handleLoadingComplete = () => {
-    setIsLoading(false)
-  }
+    setIsLoading(false);
+  };
 
   return (
     <>
@@ -119,7 +119,10 @@ export default function Home() {
           </div>
 
           <div className="flex md:hidden mt-4">
-            <button onClick={toggleMenu} className="text-black mr-3 rounded focus:outline-none hover:bg-gray-300">
+            <button
+              onClick={toggleMenu}
+              className="text-black mr-3 rounded focus:outline-none hover:bg-gray-300"
+            >
               {isMenuOpen ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +131,12 @@ export default function Home() {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               ) : (
                 <svg
@@ -138,7 +146,12 @@ export default function Home() {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 </svg>
               )}
             </button>
@@ -165,7 +178,11 @@ export default function Home() {
                 stroke="currentColor"
                 className="size-12 ml-2"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                />
               </svg>
             </a>
             <a
@@ -185,7 +202,11 @@ export default function Home() {
                 stroke="currentColor"
                 className="size-12 ml-2"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                />
               </svg>
             </a>
             <a
@@ -205,7 +226,11 @@ export default function Home() {
                 stroke="currentColor"
                 className="size-12 ml-2"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                />
               </svg>
             </a>
             <a
@@ -225,10 +250,16 @@ export default function Home() {
                 stroke="currentColor"
                 className="size-12 ml-2"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                />
               </svg>
             </a>
-            <p className="text-center text-sm mt-36 mb-5">©️ 2024 Cretivox Creative Community</p>
+            <p className="text-center text-sm mt-36 mb-5">
+              ©️ 2024 Cretivox Creative Community
+            </p>
           </div>
         </nav>
         <div className="h-px bg-black w-full md:hidden mt-4"></div>
@@ -236,11 +267,11 @@ export default function Home() {
       <div className="text-white text-xs text-center absolute bottom-2 left-0 right-0 py-4 cursor-pointer z-30">
         <button
           onClick={() => {
-            console.log("Scroll Down button clicked")
+            console.log("Scroll Down button clicked");
             window.scrollBy({
               top: window.innerHeight * 1.2,
               behavior: "smooth",
-            })
+            });
           }}
           className="group relative inline-flex items-center overflow-hidden bg-black px-3 py-1 text-white font-semibold focus:outline-none focus:ring rounded-full"
         >
@@ -253,7 +284,11 @@ export default function Home() {
             stroke="currentColor"
             strokeWidth={2}
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
           </svg>
         </button>
       </div>
@@ -305,7 +340,9 @@ export default function Home() {
           />
         </div>
         <div className="relative z-10">
-          <h2 className="text-5xl md:text-8xl text-black font-black text-left mix-blend-multiply">CREATIVE</h2>
+          <h2 className="text-5xl md:text-8xl text-black font-black text-left mix-blend-multiply">
+            CREATIVE
+          </h2>
         </div>
         <div className="relative z-10">
           <h2 className="text-5xl md:text-8xl text-black font-black text-left">
@@ -313,24 +350,48 @@ export default function Home() {
           </h2>
         </div>
         <div className="relative z-10">
-          <h2 className="text-5xl md:text-8xl text-black font-black text-left">DEVELOPER</h2>
+          <h2 className="text-5xl md:text-8xl text-black font-black text-left">
+            DEVELOPER
+          </h2>
         </div>
       </section>
       {/* END TAGLINE */}
 
+      {/* VIDEO */}
+      <section className="min-h-screen w-full flex justify-center items-center overflow-hidden relative">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          suppressHydrationWarning
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/intro2.mp4" type="video/mp4" />
+        </video>
+      </section>
+
+      {/* END VIDEO */}
+
       {/* Rest of the page content remains the same */}
       {/* About */}
-      <section id="about" className="bg-black rounded-3xl">
+      <section id="about" className="bg-black rounded-b-3xl">
         <TextReveal>
-          A passionate Front End Developer who loves crafting beautiful, responsive, and user friendly web experiences.
-          With a strong foundation in HTML, CSS, JavaScript, and TypeScript modern frameworks like ReactJS and NextJS, I
-          bring designs to life with smooth interactions and seamless functionality.
+          A passionate Front End Developer who loves crafting beautiful,
+          responsive, and user friendly web experiences. With a strong
+          foundation in HTML, CSS, JavaScript, and TypeScript modern frameworks
+          like ReactJS and NextJS, I bring designs to life with smooth
+          interactions and seamless functionality.
         </TextReveal>
       </section>
       {/* End About */}
 
       {/* Cover Project */}
-      <section ref={pinnedRef} id="project" className="relative bg-[#ffffff] flex flex-col">
+      <section
+        ref={pinnedRef}
+        id="project"
+        className="relative bg-[#ffffff] flex flex-col"
+      >
         <div className="flex-1 container mx-auto px-4 pt-8 min-h-screen w-full md:max-w-full">
           <div className="flex justify-between items-start">
             <span className="text-xs uppercase tracking-widest font-light">
@@ -388,21 +449,26 @@ export default function Home() {
       {/* Velocity */}
       <VelocityScroll
         text="FRONT END DEVELOPER  •  "
-        default_velocity={1}
-        className="font-display text-center text-2xl font-black tracking-[-0.02em] text-white bg-black drop-shadow-sm dark:text-white md:text-6xl md:leading-[5rem]"
-       />
+        default_velocity={4}
+        className="font-display text-center text-2xl font-black tracking-[-0.02em] text-white bg-yellow-300 drop-shadow-sm dark:text-white md:text-6xl md:leading-[5rem]"
+      />
       {/* End Velocity */}
 
       {/* Style */}
-      <section id="style" className="w-full max-w-full py-14 mx-auto p-6 grid gap-8 md:grid-cols-2 bg-white">
+      <section
+        id="style"
+        className="w-full max-w-full py-14 mx-auto p-6 grid gap-8 md:grid-cols-2 bg-white"
+      >
         {/* Colors Section */}
         <div className="space-y-6">
           <h3 className="text-4xl font-semibold mb-4">../Colors ...</h3>
           <div className="prose dark:prose-invert">
             <p className="text-muted-foreground text-1xl">
               For this project, i chose two main colors -{" "}
-              <span className="font-medium text-foreground italic">black and white</span>, accompanied by two shades of
-              gray.{" "}
+              <span className="font-medium text-foreground italic">
+                black and white
+              </span>
+              , accompanied by two shades of gray.{" "}
               <span className="font-medium text-foreground italic">
                 These colors highlight professionalism, cleanliness, and status.
               </span>
@@ -434,10 +500,14 @@ export default function Home() {
           <h2 className="text-6xl font-bold mb-8">Typography</h2>
           <div className="prose dark:prose-invert">
             <p className="text-muted-foreground text-1xl">
-              I used the <span className="font-medium text-foreground">Arial, Helvetica, and sans-serif fonts</span> for
-              optimal readability and a clean, professional appearance. Arial provides a balanced and modern feel
-              suitable for various interfaces, while Helvetica enhances clarity and legibility across different screen
-              sizes.
+              I used the{" "}
+              <span className="font-medium text-foreground">
+                Arial, Helvetica, and sans-serif fonts
+              </span>{" "}
+              for optimal readability and a clean, professional appearance.
+              Arial provides a balanced and modern feel suitable for various
+              interfaces, while Helvetica enhances clarity and legibility across
+              different screen sizes.
             </p>
           </div>
         </div>
@@ -454,5 +524,5 @@ export default function Home() {
       </footer>
       {/* End Footer */}
     </>
-  )
+  );
 }

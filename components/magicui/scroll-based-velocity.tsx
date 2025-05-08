@@ -10,6 +10,7 @@ import {
   useTransform,
   useVelocity,
 } from "framer-motion";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
@@ -20,7 +21,6 @@ interface VelocityScrollProps {
 }
 
 interface ParallaxProps {
-  children: string;
   baseVelocity: number;
   className?: string;
 }
@@ -36,16 +36,15 @@ export function VelocityScroll({
   className,
 }: VelocityScrollProps) {
   function ParallaxText({
-    children,
-    baseVelocity = 100,
+    baseVelocity = 200,
     className,
   }: ParallaxProps) {
     const baseX = useMotionValue(0);
     const { scrollY } = useScroll();
     const scrollVelocity = useVelocity(scrollY);
     const smoothVelocity = useSpring(scrollVelocity, {
-      damping: 50,
-      stiffness: 400,
+      damping: 80,
+      stiffness: 250,
     });
 
     const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
@@ -70,9 +69,9 @@ export function VelocityScroll({
 
       window.addEventListener("resize", calculateRepetitions);
       return () => window.removeEventListener("resize", calculateRepetitions);
-    }, [children]);
+    }, []);
 
-    const x = useTransform(baseX, (v) => `${wrap(-100 / repetitions, 0, v)}%`);
+    const x = useTransform(baseX, (v) => `${wrap(-100, 0, v)}%`);
 
     const directionFactor = React.useRef<number>(1);
     useAnimationFrame((t, delta) => {
@@ -91,13 +90,83 @@ export function VelocityScroll({
 
     return (
       <div
-        className="w-full overflow-hidden whitespace-nowrap"
+        className="w-full overflow-hidden whitespace-nowrap bg-yellow-300"
         ref={containerRef}
       >
         <motion.div className={cn("inline-block", className)} style={{ x }}>
           {Array.from({ length: repetitions }).map((_, i) => (
             <span key={i} ref={i === 0 ? textRef : null}>
-              {children}{" "}
+              <Image
+                src="/logo-ogs.png"
+                alt="OGS"
+                width={100}
+                height={100}
+                className="inline-block ml-1 mr-1 w-16 md:w-40"
+              />
+              <Image
+                src="/titik.png"
+                alt="OGS"
+                width={100}
+                height={100}
+                className="inline-block w-2"
+              />
+              <Image
+                src="/logo-popu.png"
+                alt="POPU"
+                width={100}
+                height={100}
+                className="inline-block ml-2 mr-2 w-14 md:w-40 "
+              />
+              <Image
+                src="/titik.png"
+                alt="OGS"
+                width={100}
+                height={100}
+                className="inline-block w-2"
+              />
+              <Image
+                src="/logo-condfe.png"
+                alt="cretivox"
+                width={100}
+                height={100}
+                className="inline-block ml-2 mr-2 w-20 md:w-40"
+              />
+              <Image
+                src="/titik.png"
+                alt="titik"
+                width={100}
+                height={100}
+                className="inline-block w-2"
+              />
+              <Image
+                src="/logo-cretivox.png"
+                alt="cretivox"
+                width={100}
+                height={100}
+                className="inline-block w-28 md:w-56"
+              />
+              <Image
+                src="/titik.png"
+                alt="OGS"
+                width={100}
+                height={100}
+                className="inline-block w-2"
+              />
+              <Image
+                src="/logo-daycare.png"
+                alt="cretivox"
+                width={100}
+                height={100}
+                className="inline-block w-14 md:w-28"
+              />
+              <Image
+                src="/titik.png"
+                alt="titik"
+                width={100}
+                height={100}
+                className="inline-block w-2"
+              />
+              
             </span>
           ))}
         </motion.div>
@@ -107,12 +176,8 @@ export function VelocityScroll({
 
   return (
     <section className="relative w-full">
-      <ParallaxText baseVelocity={default_velocity} className={className}>
-        {text}
-      </ParallaxText>
-      <ParallaxText baseVelocity={-default_velocity} className={className}>
-        {text}
-      </ParallaxText>
+      <ParallaxText baseVelocity={default_velocity} className={className} />
+      <ParallaxText baseVelocity={-default_velocity} className={className} />
     </section>
   );
 }
